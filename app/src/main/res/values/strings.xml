@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">KintoreMemo</string>
+    <string name="exercise_entry_title">種目を登録</string>
+    <string name="exercise_entry_description">よく使う種目を登録しておくと、記録がスムーズになります。</string>
+    <string name="exercise_entry_name_label">種目名</string>
+    <string name="exercise_entry_name_hint">例：ベンチプレス、スクワットなど</string>
+    <string name="exercise_entry_body_part_label">部位</string>
+    <string name="exercise_entry_note_label">メモ</string>
+    <string name="exercise_entry_note_hint">補足やフォームの注意点をメモできます</string>
+    <string name="exercise_entry_save">登録する</string>
 </resources>

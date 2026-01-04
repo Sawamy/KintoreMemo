@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.hilt.android)
+    id("org.jetbrains.kotlin.kapt")
 }
 
 android {
@@ -39,6 +41,13 @@ android {
     }
 }
 
+configurations.all {
+    resolutionStrategy {
+        // Force a modern Javapoet to avoid missing ClassName.canonicalName errors from older transitive deps.
+        force("com.squareup:javapoet:1.13.0")
+    }
+}
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -56,4 +65,14 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+    implementation(libs.hilt.navigation.compose)
+    // Ensure annotation processors see a modern Javapoet (canonicalName is required).
+    kapt("com.squareup:javapoet:1.13.0")
+}
+
+kapt {
+    correctErrorTypes = true
 }
